@@ -1,14 +1,14 @@
 package com.example.wpa_alpha.Controllers;
 
-import com.example.wpa_alpha.Modells.FilteredDisplayModell;
-import com.example.wpa_alpha.Modells.StaticReadModell;
-import com.example.wpa_alpha.Modells.WriteModell;
+import com.example.wpa_alpha.Modells.*;
+import com.example.wpa_alpha.Modells.Stream.Database;
 import com.example.wpa_alpha.Views.MainLayoutView;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.stream.Stream;
 
 public class MainLayoutController {
     public MainLayoutController(MainLayoutView view) {
@@ -16,6 +16,11 @@ public class MainLayoutController {
     }
 
     public void setView(MainLayoutView view) {
+        String helyszinURL = "C:\\Users\\Habony Zoltán\\Documents\\GitHub\\szeleromu_java\\javafx\\Szeleromuvek\\src\\main\\resources\\com\\example\\wpa_alpha\\helyszin.txt";
+        String megyeURL = "C:\\Users\\Habony Zoltán\\Documents\\GitHub\\szeleromu_java\\javafx\\Szeleromuvek\\src\\main\\resources\\com\\example\\wpa_alpha\\megye.txt";
+        String toronyURL = "C:\\Users\\Habony Zoltán\\Documents\\GitHub\\szeleromu_java\\javafx\\Szeleromuvek\\src\\main\\resources\\com\\example\\wpa_alpha\\torony.txt";
+        Database streamDatabase = new Database(helyszinURL, megyeURL, toronyURL);
+
         for (int i = 0; i < view.getMenuBar().getMenus().size(); i++) {
             int finalI = i;
             for (int j = 0; j < view.getMenuBar().getMenus().get(i).getItems().size(); j++) {
@@ -111,9 +116,17 @@ public class MainLayoutController {
                             //Egyéb menü
 
                         case "other_parallel":
+                            String parallelTitle = view.getMenuBar().getMenus().get(finalI).getText() + " - " + view.getMenuBar().getMenus().get(finalI).getItems().get(finalJ).getText() + " almenü";
+                            String parallelTaskDescription = "Mutassa be a párhuzamos programvégrehajtást egy oldalon. pl. egy gombra való kattintás után egy Label-ben 1 másodpercenként, a másik Labelbe 2 másodpercenként jelenjen meg egy változó szöveg. 10x fog végrehajtódni utánna megszűnik a párhuzamosság";
+                            ParalellModell paralellModell = new ParalellModell(parallelTitle, parallelTaskDescription);
+                            view.getMainFrameBP().setCenter(paralellModell.getWriteContainer());
                             break;
 
                         case "other_stream":
+                            String streamTitle = view.getMenuBar().getMenus().get(finalI).getText() + " - " + view.getMenuBar().getMenus().get(finalI).getItems().get(finalJ).getText() + " almenü";
+                            String streamTaskDescription = "Olvassa ki a válsztott adatbázis minden adatát egy Stream-be. Késztsen egy űrlapot (beviteli mezők, lenyíló lista, radio gomb, jelölő négyzet), ahol több szűrőfeltételt is beállíthat az adatokra. Jelenítse meg egy táblázatban a szűrt adatokat.";
+                            StreamReadModell streamReadModell = new StreamReadModell(streamTitle,streamTaskDescription,streamDatabase);
+                            view.getMainFrameBP().setCenter(streamReadModell.getFilteredContainer());
                             break;
 
                         default:
