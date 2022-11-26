@@ -2,10 +2,12 @@ package com.example.wpa_alpha.Controllers;
 
 import com.example.wpa_alpha.Modells.*;
 import com.example.wpa_alpha.Modells.Stream.Database;
+import com.example.wpa_alpha.RestClient.FakeRestClient;
 import com.example.wpa_alpha.Views.MainLayoutView;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.stream.Stream;
@@ -20,6 +22,7 @@ public class MainLayoutController {
         String megyeURL = "C:\\Users\\Habony Zoltán\\Documents\\GitHub\\szeleromu_java\\javafx\\Szeleromuvek\\src\\main\\resources\\com\\example\\wpa_alpha\\megye.txt";
         String toronyURL = "C:\\Users\\Habony Zoltán\\Documents\\GitHub\\szeleromu_java\\javafx\\Szeleromuvek\\src\\main\\resources\\com\\example\\wpa_alpha\\torony.txt";
         Database streamDatabase = new Database(helyszinURL, megyeURL, toronyURL);
+        FakeRestClient fakeRestClient = new FakeRestClient();
 
         for (int i = 0; i < view.getMenuBar().getMenus().size(); i++) {
             int finalI = i;
@@ -69,15 +72,31 @@ public class MainLayoutController {
                                 //Rest1 menü
 
                         case "rest1_read":
+                            String fakeRestReadTitle = view.getMenuBar().getMenus().get(finalI).getText() + " - " + view.getMenuBar().getMenus().get(finalI).getItems().get(finalJ).getText() + " almenü";
+                            String fakeRestReadTaskDescription = "Készítsen egy Restful klienst az eladáson bemutatott https://gorest.co.in Rest szerverhez, amely megvalósítja a Read műveletet(GET metódus)";
+                            FakeRestReadModell fakeRestReadModell = new FakeRestReadModell(fakeRestReadTitle, fakeRestReadTaskDescription);
+                            view.getMainFrameBP().setCenter(fakeRestReadModell.getContainer());
                             break;
 
                         case "rest1_write":
+                            String fakeRestWriteTitle = view.getMenuBar().getMenus().get(finalI).getText() + " - " + view.getMenuBar().getMenus().get(finalI).getItems().get(finalJ).getText() + " almenü";
+                            String fakeRestWriteTaskDescription = "Készítsen egy Restful klienst az eladáson bemutatott https://gorest.co.in Rest szerverhez, amely megvalósítja a Write műveletet(POST metódus)";
+                            FakeRestWriteModell fakeRestWriteModell = new FakeRestWriteModell(fakeRestWriteTitle, fakeRestWriteTaskDescription);
+                            view.getMainFrameBP().setCenter(fakeRestWriteModell.getContainer());
                             break;
 
                         case "rest1_modify":
+                            String fakeRestModifyTitle = view.getMenuBar().getMenus().get(finalI).getText() + " - " + view.getMenuBar().getMenus().get(finalI).getItems().get(finalJ).getText() + " almenü";
+                            String fakeRestModifyTaskDescription = "Készítsen egy Restful klienst az eladáson bemutatott https://gorest.co.in Rest szerverhez, amely megvalósítja a Modify műveletet(PUT metódus)";
+                            FakeRestModifyModell fakeRestModifyModell = new FakeRestModifyModell(fakeRestModifyTitle, fakeRestModifyTaskDescription);
+                            view.getMainFrameBP().setCenter(fakeRestModifyModell.getContainer());
                             break;
 
                         case "rest1_delete":
+                            String fakeRestDeleteTitle = view.getMenuBar().getMenus().get(finalI).getText() + " - " + view.getMenuBar().getMenus().get(finalI).getItems().get(finalJ).getText() + " almenü";
+                            String fakeRestDeleteTaskDescription = "Készítsen egy Restful klienst az eladáson bemutatott https://gorest.co.in Rest szerverhez, amely megvalósítja a Delete műveletet(DELETE metódus)";
+                            FakeRestDeleteModell fakeRestDeleteModell = new FakeRestDeleteModell(fakeRestDeleteTitle, fakeRestDeleteTaskDescription);
+                            view.getMainFrameBP().setCenter(fakeRestDeleteModell.getContainer());
                             break;
 
                             //Rest2 menü
