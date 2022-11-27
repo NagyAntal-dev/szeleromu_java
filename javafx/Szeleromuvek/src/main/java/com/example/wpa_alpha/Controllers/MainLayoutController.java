@@ -1,16 +1,18 @@
 package com.example.wpa_alpha.Controllers;
 
+import com.example.wpa_alpha.MachineLearning.MachineLearningClass;
+import com.example.wpa_alpha.MachineLearning.MoreMachineLearningClass;
 import com.example.wpa_alpha.Modells.*;
 import com.example.wpa_alpha.Modells.Stream.Database;
 import com.example.wpa_alpha.RestClient.FakeRestClient;
 import com.example.wpa_alpha.Views.MainLayoutView;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
+import weka.classifiers.bayes.NaiveBayes;
+import weka.classifiers.functions.SMO;
+import weka.classifiers.lazy.IBk;
+import weka.classifiers.trees.RandomForest;
+import weka.core.Utils;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.stream.Stream;
 
 public class MainLayoutController {
     public MainLayoutController(MainLayoutView view) {
@@ -126,10 +128,32 @@ public class MainLayoutController {
 
                             //Adatgyűjtés menü
 
-                        case "dc_download":
+                        case "decision_tree":
+                            String decisionTreeTitle = view.getMenuBar().getMenus().get(finalI).getText() + " - " + view.getMenuBar().getMenus().get(finalI).getItems().get(finalJ).getText() + " almenü";
+                            String decisionTreeDescription = "Készítsenek döntési fával gépi tanuló algoritmus a kiválasztott attribútum előrejelzésére. Eredményül írassák ki a Döntési fa.txt fájlba a következő adatokat: \n" +
+                                    "Tanító és kiértékelő halmaz mérete, \n" +
+                                    "TP, TN, FP, FN, Correctly Classified Instances, Incorrectly Classified Instances\n" +
+                                    "A döntési fa kiíratása\n" +
+                                    "A kiértékelő halmaz minden egyedére a prediktált és a valós érték\n";
+                            MLDecisionTreeModell mlDecisionTree = new MLDecisionTreeModell(decisionTreeTitle, decisionTreeDescription);
+                            view.getMainFrameBP().setCenter(mlDecisionTree.getWriteContainer());
                             break;
 
-                        case "dc_download2":
+                        case "more_algorithm":
+                            String moreAlgorithmTitle = view.getMenuBar().getMenus().get(finalI).getText() + " - " + view.getMenuBar().getMenus().get(finalI).getItems().get(finalJ).getText() + " almenü";
+                            String moreAlgorithmDescription = "A választott adathalmazra futtassa le a tanult algoritmusokat. A Gépi tanulás.txt fájlba írassa ki mindegyikre: \n" +
+                                    "TP, TN, FP, FN, Correctly Classified Instances, Incorrectly Classified Instances\n" +
+                                    "Válassza ki az algoritmusok közül azt, amelyiknek a legjobb lett a Correctly Classified Instances eredménye és írassa ki az algoritmus nevét az alkalmazás ablakába.\n";
+                            MLMoreAlgorithmModell mlMoreAlgorithmModell = new MLMoreAlgorithmModell(moreAlgorithmTitle, moreAlgorithmDescription);
+                            view.getMainFrameBP().setCenter(mlMoreAlgorithmModell.getWriteContainer());
+                            break;
+
+                        case "more_algorithm2":
+                            String moreAlgorithmListTitle = view.getMenuBar().getMenus().get(finalI).getText() + " - " + view.getMenuBar().getMenus().get(finalI).getItems().get(finalJ).getText() + " almenü";
+                            String moreAlgorithmListDescription = "Lenyíló listából lehessen választani a tanult algoritmusok közül. Az algoritmust lefuttatva írassa ki az alkalmazás ablakába a következő adatokat:\n" +
+                                    "TP, TN, FP, FN, Correctly Classified Instances, Incorrectly Classified Instances\n";
+                            MLMoreAlgorithmListModell mlMoreAlgorithmListModell = new MLMoreAlgorithmListModell(moreAlgorithmListTitle, moreAlgorithmListDescription);
+                            view.getMainFrameBP().setCenter(mlMoreAlgorithmListModell.getWriteContainer());
                             break;
 
                             //Egyéb menü
