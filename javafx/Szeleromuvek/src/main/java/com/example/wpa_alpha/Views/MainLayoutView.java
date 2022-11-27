@@ -83,8 +83,9 @@ public class MainLayoutView {
 
         //Menu - Adatgyűjtés
         //Adatgyűjtés - Almenük létrehozása
-        dataCollectionMenuItem.put("Letöltés","dc_download");
-        dataCollectionMenuItem.put("Letöltés2","dc_download2");
+        dataCollectionMenuItem.put("Döntési fa","decision_tree");
+        dataCollectionMenuItem.put("Több algoritmus","more_algorithm");
+        dataCollectionMenuItem.put("Több algoritmus2","more_algorithm2");
         //Adatgyűjtés - Menupont létrehozása
         menu.put("Adatgyűjtés", dataCollectionMenuItem);
 
