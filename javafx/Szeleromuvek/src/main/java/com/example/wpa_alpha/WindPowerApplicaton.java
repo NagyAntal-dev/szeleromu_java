@@ -30,8 +30,6 @@ public class WindPowerApplicaton extends Application {
     }
 
     public static void main(String[] args) {
-        ArrayList<Torony> tmp = ToronyDAO.filterByMaxDarab(2);
-        System.out.println(tmp.toArray().length);
         launch();
     }
 }

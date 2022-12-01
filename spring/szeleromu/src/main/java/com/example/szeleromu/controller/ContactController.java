@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -45,7 +46,13 @@ public class ContactController {
             model.addAttribute("currentUserRole",SecurityContextHolder.getContext().getAuthentication().getAuthorities().toArray()[0].toString());
             //TODO 3. Ha valami rossz
             if (result.hasErrors()){
-                return("login");
+                String errorMessage = result
+                        .getFieldErrors()
+                        .stream()
+                        .map(fieldError -> fieldError.getField() + ": " + fieldError.getDefaultMessage())
+                        .collect(Collectors.joining("; "));
+                model.addAttribute("Hiba",errorMessage);
+                return("/contact");
             }
 
             //Küldés dátum
