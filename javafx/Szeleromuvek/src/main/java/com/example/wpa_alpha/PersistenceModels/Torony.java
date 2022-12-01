@@ -1,8 +1,27 @@
 package com.example.wpa_alpha.PersistenceModels;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.ParamDef;
+
 import javax.persistence.*;
 import java.util.Objects;
-
+@FilterDef(name = "filterTeljesitmenyMin",
+        parameters = @ParamDef(name = "minTelj", type = "integer"),
+        defaultCondition = "teljesitmeny > :minTelj")
+@FilterDef(name = "filterTeljesitmenyMax",
+        parameters = @ParamDef(name = "maxTelj", type = "integer"),
+        defaultCondition = "teljesitmeny < :maxTelj")
+@FilterDef(name = "filterDarabMin",
+        parameters = @ParamDef(name = "minDarab", type = "integer"),
+        defaultCondition = "darab >= :minDarab")
+@FilterDef(name = "filterDarabMax",
+        parameters = @ParamDef(name = "maxDarab", type = "integer"),
+        defaultCondition = "darab <= :maxDarab")
+@Filter(name = "filterTeljesitmenyMin")
+@Filter(name = "filterTeljesitmenyMax")
+@Filter(name = "filterDarabMin")
+@Filter(name = "filterDarabMax")
 @Entity
 public class Torony {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +40,7 @@ public class Torony {
     @Basic
     @Column(name = "helyszinid")
     private int helyszinid;
+
 
     public int getId() {
         return id;
@@ -62,6 +82,8 @@ public class Torony {
         this.helyszinid = helyszinid;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,4 +96,17 @@ public class Torony {
     public int hashCode() {
         return Objects.hash(id, darab, teljesitmeny, kezdev, helyszinid);
     }
+
+    @Override
+    public String toString() {
+        return "Torony{" +
+                "id=" + id +
+                ", darab=" + darab +
+                ", teljesitmeny=" + teljesitmeny +
+                ", kezdev=" + kezdev +
+                ", helyszinid=" + helyszinid +
+                '}';
+    }
 }
+
+

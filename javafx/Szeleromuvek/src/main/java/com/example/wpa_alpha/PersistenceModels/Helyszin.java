@@ -15,6 +15,9 @@ public class Helyszin {
     @Basic
     @Column(name = "megyeid")
     private int megyeid;
+    @OneToOne
+    @JoinColumn(name = "megyeid", referencedColumnName = "id", insertable = false, updatable = false)
+    private Megye megye;
 
     public int getId() {
         return id;
@@ -38,6 +41,14 @@ public class Helyszin {
 
     public void setMegyeid(int megyeid) {
         this.megyeid = megyeid;
+    }
+
+    public Megye getMegye() {
+        return megye;
+    }
+
+    public void setMegye(Megye megye) {
+        this.megye = megye;
     }
 
     @Override
