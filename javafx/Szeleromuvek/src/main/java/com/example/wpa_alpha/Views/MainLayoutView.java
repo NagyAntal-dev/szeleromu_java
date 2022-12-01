@@ -1,12 +1,16 @@
 package com.example.wpa_alpha.Views;
 
+import com.example.wpa_alpha.Modells.Empty;
+import com.example.wpa_alpha.Modells.FirstPage;
 import com.example.wpa_alpha.Modells.MenuBlueprint;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 
 import java.util.HashMap;
 
@@ -35,13 +39,17 @@ public class MainLayoutView {
     }
 
     public BorderPane createBorderPane(){
+        String firstPageTitle = "Java alkalmazások előadás beadandó!";
+        String firstPageDescription = "Az alkalmazás funkcióit a menüpontok segítségvel érheti el.";
+        String firstPageDescription2 = "Az el nem készített menüpontoknak egy külön oldal készült, ami tartalmaz egy kis leírást";
+        FirstPage firstPage = new FirstPage(firstPageTitle,firstPageDescription, firstPageDescription2);
         this.mainFrameBP = new BorderPane();
         this.mainFrameBP.setTop(this.menuBar);
         Label copyright = new Label("© 2022 - Nagy Antal & Habony Zoltán mérnökinformatikus hallgatók - All Rights Reserved!");
         copyright.setPadding(new Insets(10, 20,10,20));
         BorderPane.setAlignment(copyright, Pos.BOTTOM_CENTER);
         this.mainFrameBP.setBottom(copyright);
-        this.mainFrameBP.setCenter(new Label("Center"));
+        this.mainFrameBP.setCenter(firstPage.getContainer());
         this.mainFrameBP.setMinWidth(300);
         return this.mainFrameBP;
     }

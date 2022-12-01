@@ -14,4 +14,5 @@ module com.example.wpa_alpha {
     exports com.example.wpa_alpha.MachineLearning;
 
     opens com.example.wpa_alpha.PersistenceModels;
+    exports com.example.wpa_alpha.Modells;
 }
