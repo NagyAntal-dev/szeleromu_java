@@ -69,7 +69,7 @@ public class MLMoreAlgorithmListModell {
         Button makeDecisionTree = new Button("Algoritmus futtatása");
         buttonHolder.getChildren().add(makeDecisionTree);
         buttonHolder.setPadding(new Insets(20,0,0,20));
-        String path = "C:\\Users\\Habony Zoltán\\Documents\\GitHub\\szeleromu_java\\javafx\\Szeleromuvek\\src\\main\\resources\\com\\example\\wpa_alpha\\labor.arff";
+        String path = "src/main/resources/com/example/wpa_alpha/labor.arff";
 
         Label solutionTitle = new Label("A tanítás megoldása: ");
         solutionTitle.setFont(Font.font("Helvetica", FontWeight.EXTRA_BOLD, 14));

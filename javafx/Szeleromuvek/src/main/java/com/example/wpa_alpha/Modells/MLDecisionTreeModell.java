@@ -46,7 +46,7 @@ public class MLDecisionTreeModell {
         buttonHolder.getChildren().add(makeDecisionTree);
         buttonHolder.setPadding(new Insets(0,0,0,20));
         makeDecisionTree.setOnAction(actionEvent -> {
-            String path = "C:\\Users\\Habony Zoltán\\Documents\\GitHub\\szeleromu_java\\javafx\\Szeleromuvek\\src\\main\\resources\\com\\example\\wpa_alpha\\labor.arff";
+            String path = "src/main/resources/com/example/wpa_alpha/labor.arff";
             try{
                 MachineLearningClass machineLearningClass = new MachineLearningClass(path, 16);
                 alert.setTextFill(Color.GREEN);

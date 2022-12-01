@@ -64,7 +64,7 @@ public class MLMoreAlgorithmModell {
         bestAlgorithmDescription.setPadding(new Insets(0,0,10,20));
 
         makeDecisionTree.setOnAction(actionEvent -> {
-            String path = "C:\\Users\\Habony Zoltán\\Documents\\GitHub\\szeleromu_java\\javafx\\Szeleromuvek\\src\\main\\resources\\com\\example\\wpa_alpha\\labor.arff";
+            String path = "src/main/resources/com/example/wpa_alpha/labor.arff";
             IBk classifier = new IBk();
             try {
                 classifier.setOptions(Utils.splitOptions("-K 10"));

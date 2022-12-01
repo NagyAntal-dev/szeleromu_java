@@ -20,9 +20,9 @@ public class MainLayoutController {
     }
 
     public void setView(MainLayoutView view) {
-        String helyszinURL = "C:\\Users\\Habony Zoltán\\Documents\\GitHub\\szeleromu_java\\javafx\\Szeleromuvek\\src\\main\\resources\\com\\example\\wpa_alpha\\helyszin.txt";
-        String megyeURL = "C:\\Users\\Habony Zoltán\\Documents\\GitHub\\szeleromu_java\\javafx\\Szeleromuvek\\src\\main\\resources\\com\\example\\wpa_alpha\\megye.txt";
-        String toronyURL = "C:\\Users\\Habony Zoltán\\Documents\\GitHub\\szeleromu_java\\javafx\\Szeleromuvek\\src\\main\\resources\\com\\example\\wpa_alpha\\torony.txt";
+        String helyszinURL = "src/main/resources/com/example/wpa_alpha/helyszin.txt";
+        String megyeURL = "src/main/resources/com/example/wpa_alpha/megye.txt";
+        String toronyURL = "src/main/resources/com/example/wpa_alpha/torony.txt";
         Database streamDatabase = new Database(helyszinURL, megyeURL, toronyURL);
         FakeRestClient fakeRestClient = new FakeRestClient();
 

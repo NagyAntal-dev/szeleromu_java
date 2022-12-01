@@ -50,11 +50,7 @@ public class MachineLearningClass {
                 if((((Instances)kiértékelő).get(i)).classValue()==0 && eredmeny[i]==0)
                     TN++;
             }
-            /*
-            System.out.println("TP="+TP+", "+"TN="+TN+", "+"FP="+FP+", "+"FN="+FN);
-            System.out.println("TP+TN="+(TP+TN));
-            System.out.println("FP+FN="+(FP+FN));
-            */
+
             String allSolution = "";
             allSolution += "A feladat megoldása döntési fával!\n";
             allSolution += "Tanító halmaz mérete:" + tanító.size() +"\n";
