@@ -93,9 +93,11 @@ public class StreamReadModell {
             tableView.getColumns().addAll(toronyIdColumn, darabColumn,teljesitmenyColumn,kezdevColumn,helyszinAzonositoColumn);
 
             List<Torony> toronyList = database.getToronyArrayList().stream().collect(Collectors.toList());
+
             for(Torony torony : toronyList){
                 tableView.getItems().add(torony);
             }
+
             tableView.getItems();
             tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
             tableView.setMaxWidth(710);
